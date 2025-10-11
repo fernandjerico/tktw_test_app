@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
@@ -26,8 +24,19 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    context.read<GetStoreBloc>().add(GetStoreEvent.getAllStores());
-    context.read<GetStoreByIdBloc>().add(GetStoreByIdEvent.getStoreById());
+    fetchAllData();
+  }
+
+  Future<void> fetchAllData() {
+    setState(() {
+      selectedStoreId = null;
+    });
+    return Future.microtask(() {
+      if (mounted) {
+        context.read<GetStoreBloc>().add(GetStoreEvent.getAllStores());
+        context.read<GetStoreByIdBloc>().add(GetStoreByIdEvent.getStoreById());
+      }
+    });
   }
 
   @override
@@ -37,8 +46,7 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
         child: RefreshIndicator(
           onRefresh: () {
-            context.read<GetStoreBloc>().add(GetStoreEvent.getAllStores());
-            return Future.delayed(Duration(seconds: 1));
+            return fetchAllData();
           },
           child: Column(
             children: [
@@ -54,8 +62,57 @@ class _HomePageState extends State<HomePage> {
                       child: BlocBuilder<GetStoreBloc, GetStoreState>(
                         builder: (context, state) {
                           return state.maybeWhen(
-                            orElse: () =>
-                                Center(child: CircularProgressIndicator()),
+                            orElse: () {
+                              return DropdownButtonFormField<int>(
+                                dropdownColor: Colors.white,
+                                decoration: InputDecoration(
+                                  floatingLabelBehavior:
+                                      FloatingLabelBehavior.never,
+                                  labelText: 'Semua Toko',
+                                  contentPadding: const EdgeInsets.symmetric(
+                                    vertical: 4,
+                                    horizontal: 16,
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(4),
+                                    borderSide: BorderSide(color: Colors.teal),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(4),
+                                    borderSide: BorderSide(color: Colors.teal),
+                                  ),
+                                ),
+                                items: [
+                                  DropdownMenuItem<int>(
+                                    value: null,
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          padding: const EdgeInsets.all(4),
+                                          decoration: BoxDecoration(
+                                            color: Colors.grey[600],
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: Iconify(
+                                            Mdi.home_variant,
+                                            size: 14,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        const SizedBox(width: 8),
+                                        Text(
+                                          'Semua Toko',
+                                          style: TextStyle(
+                                            color: Colors.grey[800],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                                onChanged: (value) {},
+                              );
+                            },
                             loaded: (data) {
                               return DropdownButtonFormField<int>(
                                 dropdownColor: Colors.white,
@@ -77,9 +134,9 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ),
                                 initialValue: selectedStoreId,
-                                items: data.data!.map((store) {
-                                  return DropdownMenuItem<int>(
-                                    value: store.id,
+                                items: [
+                                  DropdownMenuItem<int>(
+                                    value: null,
                                     child: Row(
                                       children: [
                                         Container(
@@ -96,22 +153,56 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                         const SizedBox(width: 8),
                                         Text(
-                                          '${store.name}',
+                                          'Semua Toko',
                                           style: TextStyle(
                                             color: Colors.grey[800],
                                           ),
                                         ),
                                       ],
                                     ),
-                                  );
-                                }).toList(),
+                                  ),
+                                  ...data.data!.map((store) {
+                                    return DropdownMenuItem<int>(
+                                      value: store.id,
+                                      child: Row(
+                                        children: [
+                                          Container(
+                                            padding: const EdgeInsets.all(4),
+                                            decoration: BoxDecoration(
+                                              color: Colors.grey[600],
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: Iconify(
+                                              Mdi.home_variant,
+                                              size: 14,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          const SizedBox(width: 8),
+                                          Text(
+                                            '${store.name}',
+                                            style: TextStyle(
+                                              color: Colors.grey[800],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }),
+                                ],
                                 onChanged: (value) {
                                   setState(() {
                                     selectedStoreId = value;
                                   });
-                                  context.read<GetStoreByIdBloc>().add(
-                                    GetStoreByIdEvent.getStoreById(id: value),
-                                  );
+                                  if (value != null) {
+                                    context.read<GetStoreByIdBloc>().add(
+                                      GetStoreByIdEvent.getStoreById(id: value),
+                                    );
+                                  } else {
+                                    context.read<GetStoreByIdBloc>().add(
+                                      GetStoreByIdEvent.getStoreById(),
+                                    );
+                                  }
                                 },
                               );
                             },
@@ -156,7 +247,6 @@ class _HomePageState extends State<HomePage> {
               Expanded(
                 child: BlocBuilder<GetStoreByIdBloc, GetStoreByIdState>(
                   builder: (context, state) {
-                    log('state $state');
                     return state.maybeWhen(
                       orElse: () => Center(child: CircularProgressIndicator()),
                       loaded: (data) {

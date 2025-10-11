@@ -35,6 +35,7 @@ class Prizes {
   final String? code;
   final String? title;
   final int? qty;
+  final String? qtyUnit;
   final DateTime? createdAt;
   final DateTime? updatedAt;
 
@@ -43,6 +44,7 @@ class Prizes {
     this.code,
     this.title,
     this.qty,
+    this.qtyUnit,
     this.createdAt,
     this.updatedAt,
   });
@@ -56,6 +58,7 @@ class Prizes {
     code: json["code"],
     title: json["title"],
     qty: json["qty"],
+    qtyUnit: json["qty_unit"],
     createdAt: json["created_at"] == null
         ? null
         : DateTime.parse(json["created_at"]),
@@ -69,6 +72,7 @@ class Prizes {
     "code": code,
     "title": title,
     "qty": qty,
+    "qty_unit": qtyUnit,
     "created_at": createdAt?.toIso8601String(),
     "updated_at": updatedAt?.toIso8601String(),
   };
