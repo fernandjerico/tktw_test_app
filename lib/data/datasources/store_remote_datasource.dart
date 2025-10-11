@@ -10,7 +10,7 @@ class StoreRemoteDatasource {
 
   Future<Either<String, CustomersResponseModel>> fetchStores() async {
     try {
-      final response = await dio.get(AppUrls.getAllStores);
+      final response = await dio.get(AppUrls.getAllCustomers);
       if (response.statusCode == 200) {
         final data = CustomersResponseModel.fromJson(response.data);
         return Right(data);
@@ -29,8 +29,8 @@ class StoreRemoteDatasource {
   }) async {
     try {
       final url = id == null
-          ? AppUrls.getAllStores
-          : '${AppUrls.getAllStores}?id=$id';
+          ? AppUrls.getAllCustomers
+          : '${AppUrls.getAllCustomers}?id=$id';
       final response = await dio.get(url);
       if (response.statusCode == 200) {
         final data = CustomersResponseModel.fromJson(response.data);
@@ -53,7 +53,7 @@ class StoreRemoteDatasource {
   }) async {
     try {
       final response = await dio.put(
-        '${AppUrls.changeStoreStatus}/$id',
+        '${AppUrls.changeCustomerStatus}/$id',
         data: {"status": status, "failed_reason": failedReason},
       );
       if (response.statusCode == 200) {
