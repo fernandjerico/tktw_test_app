@@ -4,6 +4,7 @@ import 'package:iconify_flutter/icons/cil.dart';
 import 'package:iconify_flutter/icons/mdi.dart';
 import 'package:iconify_flutter/icons/ph.dart';
 
+import '../widgets/failed_receive_tth_dialog.dart';
 import '../widgets/total_prize_dialog.dart';
 
 class HomePage extends StatefulWidget {
@@ -141,12 +142,6 @@ class _HomePageState extends State<HomePage> {
                         setState(() {
                           selectedStoreId = value;
                         });
-                      },
-                      validator: (value) {
-                        if (value == null) {
-                          return 'Nama tidak boleh kosong';
-                        }
-                        return null;
                       },
                     ),
                   ),
@@ -331,7 +326,14 @@ class _HomePageState extends State<HomePage> {
                                 children: [
                                   Expanded(
                                     child: ElevatedButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        showDialog(
+                                          context: context,
+                                          builder: (context) {
+                                            return FailedReceiveTTHDialog();
+                                          },
+                                        );
+                                      },
                                       style: ElevatedButton.styleFrom(
                                         padding: const EdgeInsets.symmetric(
                                           vertical: 8,
