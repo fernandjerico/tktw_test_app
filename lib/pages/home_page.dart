@@ -3,6 +3,7 @@ import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/cil.dart';
 import 'package:iconify_flutter/icons/mdi.dart';
 import 'package:iconify_flutter/icons/ph.dart';
+import 'package:tktw_test_app/widgets/have_received_tth_dialog.dart';
 
 import '../widgets/failed_receive_tth_dialog.dart';
 import '../widgets/total_prize_dialog.dart';
@@ -356,7 +357,13 @@ class _HomePageState extends State<HomePage> {
                                   SizedBox(width: 12),
                                   Expanded(
                                     child: ElevatedButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        showDialog(
+                                          context: context,
+                                          builder: (context) =>
+                                              HaveReceivedTthDialog(),
+                                        );
+                                      },
                                       style: ElevatedButton.styleFrom(
                                         padding: const EdgeInsets.symmetric(
                                           vertical: 8,
