@@ -4,6 +4,8 @@ import 'package:iconify_flutter/icons/cil.dart';
 import 'package:iconify_flutter/icons/mdi.dart';
 import 'package:iconify_flutter/icons/ph.dart';
 
+import '../widgets/total_prize_dialog.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -150,7 +152,14 @@ class _HomePageState extends State<HomePage> {
                   ),
                   SizedBox(width: 12),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return TotalPrizeDialog();
+                        },
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(
                         vertical: 14,
@@ -318,6 +327,54 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 );
                               }),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: ElevatedButton(
+                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: 8,
+                                          horizontal: 16,
+                                        ),
+                                        backgroundColor: Colors.grey[200],
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            8,
+                                          ),
+                                          side: BorderSide(color: Colors.teal),
+                                        ),
+                                      ),
+                                      child: Text(
+                                        'Tolak TTH',
+                                        style: TextStyle(color: Colors.teal),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(width: 12),
+                                  Expanded(
+                                    child: ElevatedButton(
+                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: 8,
+                                          horizontal: 16,
+                                        ),
+                                        backgroundColor: Colors.teal,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            8,
+                                          ),
+                                        ),
+                                      ),
+                                      child: Text(
+                                        'Terima TTH',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ],
                           ),
                         ),
