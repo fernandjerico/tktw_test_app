@@ -21,8 +21,8 @@ class _FailedReceiveTTHDialogState extends State<FailedReceiveTTHDialog> {
   String? selectedReason = '';
 
   final List<Map<String, dynamic>> reasons = [
+    {'value': 'Pemilik Sibuk', 'title': 'Pemilik Sibuk'},
     {'value': 'Toko Tutup', 'title': 'Toko Tutup'},
-    {'value': 'Pemilik Toko Tidak Ada', 'title': 'Pemilik Toko Tidak Ada'},
   ];
 
   @override
