@@ -178,7 +178,8 @@ class StoreCard extends StatelessWidget {
                           onPressed: () {
                             showDialog(
                               context: context,
-                              builder: (context) => HaveReceivedTthDialog(),
+                              builder: (context) =>
+                                  HaveReceivedTthDialog(id: store.id!),
                             );
                           },
                           style: ElevatedButton.styleFrom(

@@ -179,6 +179,12 @@ class _FailedReceiveTTHDialogState extends State<FailedReceiveTTHDialog> {
                         context.read<GetStoreByIdBloc>().add(
                           GetStoreByIdEvent.getStoreById(),
                         );
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            backgroundColor: Colors.green,
+                            content: Text(data.message!),
+                          ),
+                        );
                         Navigator.pop(context);
                       },
                       error: (error) {
