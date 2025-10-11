@@ -1,8 +1,13 @@
 class ErrorValidationResponse implements Exception {
+  final bool success;
   final String message;
   final Map<String, List<String>> errors;
 
-  ErrorValidationResponse({required this.message, required this.errors});
+  ErrorValidationResponse({
+    required this.success,
+    required this.message,
+    required this.errors,
+  });
 
   factory ErrorValidationResponse.fromJson(Map<String, dynamic> json) {
     Map<String, List<String>> parsedErrors = {};
@@ -22,6 +27,7 @@ class ErrorValidationResponse implements Exception {
     }
 
     return ErrorValidationResponse(
+      success: json['success'],
       message: json['message']?.toString() ?? 'Validation error occurred',
       errors: parsedErrors,
     );

@@ -45,7 +45,7 @@ class StoreRemoteDatasource {
 
   Future<Either<ErrorValidationResponse, ChangeStatusStoreResponseModel>>
   changeStoreStatus({
-    required String id,
+    required int id,
     required String status,
     String? failedReason,
   }) async {
@@ -66,19 +66,25 @@ class StoreRemoteDatasource {
           throw ErrorValidationResponse.fromJson(errorData);
         } else {
           throw ErrorValidationResponse(
-            message: "Validation failed",
+            success: false,
+            message: "Failed",
             errors: {},
           );
         }
       } else {
         throw ErrorValidationResponse(
+          success: false,
           message:
               response.data?['message']?.toString() ?? "Fetch data failed.",
           errors: {},
         );
       }
     } catch (e) {
-      throw ErrorValidationResponse(message: e.toString(), errors: {});
+      throw ErrorValidationResponse(
+        success: false,
+        message: e.toString(),
+        errors: {},
+      );
     }
   }
 }

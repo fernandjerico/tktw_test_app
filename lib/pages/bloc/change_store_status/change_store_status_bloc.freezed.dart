@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'get_prize_bloc.dart';
+part of 'change_store_status_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -12,7 +12,7 @@ part of 'get_prize_bloc.dart';
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
-mixin _$GetPrizeEvent {
+mixin _$ChangeStoreStatusEvent {
 
 
 
@@ -20,7 +20,7 @@ mixin _$GetPrizeEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetPrizeEvent);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeStoreStatusEvent);
 }
 
 
@@ -29,20 +29,20 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'GetPrizeEvent()';
+  return 'ChangeStoreStatusEvent()';
 }
 
 
 }
 
 /// @nodoc
-class $GetPrizeEventCopyWith<$Res>  {
-$GetPrizeEventCopyWith(GetPrizeEvent _, $Res Function(GetPrizeEvent) __);
+class $ChangeStoreStatusEventCopyWith<$Res>  {
+$ChangeStoreStatusEventCopyWith(ChangeStoreStatusEvent _, $Res Function(ChangeStoreStatusEvent) __);
 }
 
 
-/// Adds pattern-matching-related methods to [GetPrizeEvent].
-extension GetPrizeEventPatterns on GetPrizeEvent {
+/// Adds pattern-matching-related methods to [ChangeStoreStatusEvent].
+extension ChangeStoreStatusEventPatterns on ChangeStoreStatusEvent {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -55,12 +55,12 @@ extension GetPrizeEventPatterns on GetPrizeEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Started value)?  started,TResult Function( _GetPrize value)?  getPrize,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Started value)?  started,TResult Function( _ChangeStatus value)?  changeStatus,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Started() when started != null:
-return started(_that);case _GetPrize() when getPrize != null:
-return getPrize(_that);case _:
+return started(_that);case _ChangeStatus() when changeStatus != null:
+return changeStatus(_that);case _:
   return orElse();
 
 }
@@ -78,12 +78,12 @@ return getPrize(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Started value)  started,required TResult Function( _GetPrize value)  getPrize,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Started value)  started,required TResult Function( _ChangeStatus value)  changeStatus,}){
 final _that = this;
 switch (_that) {
 case _Started():
-return started(_that);case _GetPrize():
-return getPrize(_that);case _:
+return started(_that);case _ChangeStatus():
+return changeStatus(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -100,12 +100,12 @@ return getPrize(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Started value)?  started,TResult? Function( _GetPrize value)?  getPrize,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Started value)?  started,TResult? Function( _ChangeStatus value)?  changeStatus,}){
 final _that = this;
 switch (_that) {
 case _Started() when started != null:
-return started(_that);case _GetPrize() when getPrize != null:
-return getPrize(_that);case _:
+return started(_that);case _ChangeStatus() when changeStatus != null:
+return changeStatus(_that);case _:
   return null;
 
 }
@@ -122,11 +122,11 @@ return getPrize(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  started,TResult Function()?  getPrize,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  started,TResult Function( int id,  String status,  String? failedReason)?  changeStatus,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Started() when started != null:
-return started();case _GetPrize() when getPrize != null:
-return getPrize();case _:
+return started();case _ChangeStatus() when changeStatus != null:
+return changeStatus(_that.id,_that.status,_that.failedReason);case _:
   return orElse();
 
 }
@@ -144,11 +144,11 @@ return getPrize();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  started,required TResult Function()  getPrize,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  started,required TResult Function( int id,  String status,  String? failedReason)  changeStatus,}) {final _that = this;
 switch (_that) {
 case _Started():
-return started();case _GetPrize():
-return getPrize();case _:
+return started();case _ChangeStatus():
+return changeStatus(_that.id,_that.status,_that.failedReason);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -165,11 +165,11 @@ return getPrize();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  started,TResult? Function()?  getPrize,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  started,TResult? Function( int id,  String status,  String? failedReason)?  changeStatus,}) {final _that = this;
 switch (_that) {
 case _Started() when started != null:
-return started();case _GetPrize() when getPrize != null:
-return getPrize();case _:
+return started();case _ChangeStatus() when changeStatus != null:
+return changeStatus(_that.id,_that.status,_that.failedReason);case _:
   return null;
 
 }
@@ -180,7 +180,7 @@ return getPrize();case _:
 /// @nodoc
 
 
-class _Started implements GetPrizeEvent {
+class _Started implements ChangeStoreStatusEvent {
   const _Started();
   
 
@@ -200,7 +200,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'GetPrizeEvent.started()';
+  return 'ChangeStoreStatusEvent.started()';
 }
 
 
@@ -212,10 +212,75 @@ String toString() {
 /// @nodoc
 
 
-class _GetPrize implements GetPrizeEvent {
-  const _GetPrize();
+class _ChangeStatus implements ChangeStoreStatusEvent {
+  const _ChangeStatus({required this.id, required this.status, this.failedReason});
   
 
+ final  int id;
+ final  String status;
+ final  String? failedReason;
+
+/// Create a copy of ChangeStoreStatusEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ChangeStatusCopyWith<_ChangeStatus> get copyWith => __$ChangeStatusCopyWithImpl<_ChangeStatus>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ChangeStatus&&(identical(other.id, id) || other.id == id)&&(identical(other.status, status) || other.status == status)&&(identical(other.failedReason, failedReason) || other.failedReason == failedReason));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,id,status,failedReason);
+
+@override
+String toString() {
+  return 'ChangeStoreStatusEvent.changeStatus(id: $id, status: $status, failedReason: $failedReason)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ChangeStatusCopyWith<$Res> implements $ChangeStoreStatusEventCopyWith<$Res> {
+  factory _$ChangeStatusCopyWith(_ChangeStatus value, $Res Function(_ChangeStatus) _then) = __$ChangeStatusCopyWithImpl;
+@useResult
+$Res call({
+ int id, String status, String? failedReason
+});
+
+
+
+
+}
+/// @nodoc
+class __$ChangeStatusCopyWithImpl<$Res>
+    implements _$ChangeStatusCopyWith<$Res> {
+  __$ChangeStatusCopyWithImpl(this._self, this._then);
+
+  final _ChangeStatus _self;
+  final $Res Function(_ChangeStatus) _then;
+
+/// Create a copy of ChangeStoreStatusEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? id = null,Object? status = null,Object? failedReason = freezed,}) {
+  return _then(_ChangeStatus(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as String,failedReason: freezed == failedReason ? _self.failedReason : failedReason // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+/// @nodoc
+mixin _$ChangeStoreStatusState {
 
 
 
@@ -223,7 +288,7 @@ class _GetPrize implements GetPrizeEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetPrize);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChangeStoreStatusState);
 }
 
 
@@ -232,47 +297,20 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'GetPrizeEvent.getPrize()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-mixin _$GetPrizeState {
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetPrizeState);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'GetPrizeState()';
+  return 'ChangeStoreStatusState()';
 }
 
 
 }
 
 /// @nodoc
-class $GetPrizeStateCopyWith<$Res>  {
-$GetPrizeStateCopyWith(GetPrizeState _, $Res Function(GetPrizeState) __);
+class $ChangeStoreStatusStateCopyWith<$Res>  {
+$ChangeStoreStatusStateCopyWith(ChangeStoreStatusState _, $Res Function(ChangeStoreStatusState) __);
 }
 
 
-/// Adds pattern-matching-related methods to [GetPrizeState].
-extension GetPrizeStatePatterns on GetPrizeState {
+/// Adds pattern-matching-related methods to [ChangeStoreStatusState].
+extension ChangeStoreStatusStatePatterns on ChangeStoreStatusState {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -358,7 +396,7 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( PrizesResponseModel data)?  loaded,TResult Function( dynamic error)?  error,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( ChangeStatusStoreResponseModel data)?  loaded,TResult Function( dynamic error)?  error,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loading() when loading != null:
@@ -382,7 +420,7 @@ return error(_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( PrizesResponseModel data)  loaded,required TResult Function( dynamic error)  error,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( ChangeStatusStoreResponseModel data)  loaded,required TResult Function( dynamic error)  error,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case _Loading():
@@ -405,7 +443,7 @@ return error(_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( PrizesResponseModel data)?  loaded,TResult? Function( dynamic error)?  error,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( ChangeStatusStoreResponseModel data)?  loaded,TResult? Function( dynamic error)?  error,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loading() when loading != null:
@@ -422,7 +460,7 @@ return error(_that.error);case _:
 /// @nodoc
 
 
-class _Initial implements GetPrizeState {
+class _Initial implements ChangeStoreStatusState {
   const _Initial();
   
 
@@ -442,7 +480,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'GetPrizeState.initial()';
+  return 'ChangeStoreStatusState.initial()';
 }
 
 
@@ -454,7 +492,7 @@ String toString() {
 /// @nodoc
 
 
-class _Loading implements GetPrizeState {
+class _Loading implements ChangeStoreStatusState {
   const _Loading();
   
 
@@ -474,7 +512,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'GetPrizeState.loading()';
+  return 'ChangeStoreStatusState.loading()';
 }
 
 
@@ -486,13 +524,13 @@ String toString() {
 /// @nodoc
 
 
-class _Loaded implements GetPrizeState {
+class _Loaded implements ChangeStoreStatusState {
   const _Loaded(this.data);
   
 
- final  PrizesResponseModel data;
+ final  ChangeStatusStoreResponseModel data;
 
-/// Create a copy of GetPrizeState
+/// Create a copy of ChangeStoreStatusState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
@@ -511,18 +549,18 @@ int get hashCode => Object.hash(runtimeType,data);
 
 @override
 String toString() {
-  return 'GetPrizeState.loaded(data: $data)';
+  return 'ChangeStoreStatusState.loaded(data: $data)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$LoadedCopyWith<$Res> implements $GetPrizeStateCopyWith<$Res> {
+abstract mixin class _$LoadedCopyWith<$Res> implements $ChangeStoreStatusStateCopyWith<$Res> {
   factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) _then) = __$LoadedCopyWithImpl;
 @useResult
 $Res call({
- PrizesResponseModel data
+ ChangeStatusStoreResponseModel data
 });
 
 
@@ -537,12 +575,12 @@ class __$LoadedCopyWithImpl<$Res>
   final _Loaded _self;
   final $Res Function(_Loaded) _then;
 
-/// Create a copy of GetPrizeState
+/// Create a copy of ChangeStoreStatusState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? data = null,}) {
   return _then(_Loaded(
 null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
-as PrizesResponseModel,
+as ChangeStatusStoreResponseModel,
   ));
 }
 
@@ -552,13 +590,13 @@ as PrizesResponseModel,
 /// @nodoc
 
 
-class _Error implements GetPrizeState {
+class _Error implements ChangeStoreStatusState {
   const _Error(this.error);
   
 
  final  dynamic error;
 
-/// Create a copy of GetPrizeState
+/// Create a copy of ChangeStoreStatusState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
@@ -577,14 +615,14 @@ int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(
 
 @override
 String toString() {
-  return 'GetPrizeState.error(error: $error)';
+  return 'ChangeStoreStatusState.error(error: $error)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$ErrorCopyWith<$Res> implements $GetPrizeStateCopyWith<$Res> {
+abstract mixin class _$ErrorCopyWith<$Res> implements $ChangeStoreStatusStateCopyWith<$Res> {
   factory _$ErrorCopyWith(_Error value, $Res Function(_Error) _then) = __$ErrorCopyWithImpl;
 @useResult
 $Res call({
@@ -603,7 +641,7 @@ class __$ErrorCopyWithImpl<$Res>
   final _Error _self;
   final $Res Function(_Error) _then;
 
-/// Create a copy of GetPrizeState
+/// Create a copy of ChangeStoreStatusState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? error = freezed,}) {
   return _then(_Error(

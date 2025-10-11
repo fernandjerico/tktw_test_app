@@ -151,7 +151,7 @@ class StoreCard extends StatelessWidget {
                             showDialog(
                               context: context,
                               builder: (context) {
-                                return FailedReceiveTTHDialog();
+                                return FailedReceiveTTHDialog(id: store.id!);
                               },
                             );
                           },
