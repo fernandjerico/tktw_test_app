@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tktw_test_app/data/datasources/store_remote_datasource.dart';
-import 'package:tktw_test_app/data/models/store_response_model.dart';
+import 'package:tktw_test_app/data/models/customers_response_model.dart';
 
 part 'get_store_event.dart';
 part 'get_store_state.dart';

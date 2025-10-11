@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/cil.dart';
-import 'package:tktw_test_app/data/models/store_response_model.dart';
+import 'package:tktw_test_app/data/models/customers_response_model.dart';
 import 'package:tktw_test_app/widgets/failed_receive_tth_dialog.dart';
 import 'package:tktw_test_app/widgets/have_received_tth_dialog.dart';
 
 class StoreCard extends StatelessWidget {
   const StoreCard({super.key, required this.store});
 
-  final Store store;
+  final Customer store;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class StoreCard extends StatelessWidget {
                         ),
                         SizedBox(width: 4),
                         Text(
-                          '${store.location}',
+                          '${store.address}',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,

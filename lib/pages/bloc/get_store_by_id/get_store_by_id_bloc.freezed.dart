@@ -392,7 +392,7 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( StoreResponseModel data)?  loaded,TResult Function( dynamic error)?  error,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( CustomersResponseModel data)?  loaded,TResult Function( dynamic error)?  error,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loading() when loading != null:
@@ -416,7 +416,7 @@ return error(_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( StoreResponseModel data)  loaded,required TResult Function( dynamic error)  error,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( CustomersResponseModel data)  loaded,required TResult Function( dynamic error)  error,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case _Loading():
@@ -439,7 +439,7 @@ return error(_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( StoreResponseModel data)?  loaded,TResult? Function( dynamic error)?  error,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( CustomersResponseModel data)?  loaded,TResult? Function( dynamic error)?  error,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loading() when loading != null:
@@ -524,7 +524,7 @@ class _Loaded implements GetStoreByIdState {
   const _Loaded(this.data);
   
 
- final  StoreResponseModel data;
+ final  CustomersResponseModel data;
 
 /// Create a copy of GetStoreByIdState
 /// with the given fields replaced by the non-null parameter values.
@@ -556,7 +556,7 @@ abstract mixin class _$LoadedCopyWith<$Res> implements $GetStoreByIdStateCopyWit
   factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) _then) = __$LoadedCopyWithImpl;
 @useResult
 $Res call({
- StoreResponseModel data
+ CustomersResponseModel data
 });
 
 
@@ -576,7 +576,7 @@ class __$LoadedCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') $Res call({Object? data = null,}) {
   return _then(_Loaded(
 null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
-as StoreResponseModel,
+as CustomersResponseModel,
   ));
 }
 

@@ -3,16 +3,16 @@ import 'package:tktw_test_app/core/constant/app_urls.dart';
 import 'package:tktw_test_app/core/services/dio_service.dart';
 import 'package:tktw_test_app/data/models/change_status_store_response_model.dart';
 import 'package:tktw_test_app/data/models/error_validation_response.dart';
-import 'package:tktw_test_app/data/models/store_response_model.dart';
+import 'package:tktw_test_app/data/models/customers_response_model.dart';
 
 class StoreRemoteDatasource {
   final DioService dio = DioService();
 
-  Future<Either<String, StoreResponseModel>> fetchStores() async {
+  Future<Either<String, CustomersResponseModel>> fetchStores() async {
     try {
       final response = await dio.get(AppUrls.getAllStores);
       if (response.statusCode == 200) {
-        final data = StoreResponseModel.fromJson(response.data);
+        final data = CustomersResponseModel.fromJson(response.data);
         return Right(data);
       } else {
         return Left(
@@ -24,14 +24,16 @@ class StoreRemoteDatasource {
     }
   }
 
-  Future<Either<String, StoreResponseModel>> fetchStoreById({int? id}) async {
+  Future<Either<String, CustomersResponseModel>> fetchStoreById({
+    int? id,
+  }) async {
     try {
       final url = id == null
           ? AppUrls.getAllStores
           : '${AppUrls.getAllStores}?id=$id';
       final response = await dio.get(url);
       if (response.statusCode == 200) {
-        final data = StoreResponseModel.fromJson(response.data);
+        final data = CustomersResponseModel.fromJson(response.data);
         return Right(data);
       } else {
         return Left(

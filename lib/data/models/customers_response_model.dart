@@ -1,24 +1,26 @@
 import 'dart:convert';
 
-class StoreResponseModel {
+class CustomersResponseModel {
   final bool? success;
   final String? message;
-  final List<Store>? data;
+  final List<Customer>? data;
 
-  StoreResponseModel({this.success, this.message, this.data});
+  CustomersResponseModel({this.success, this.message, this.data});
 
-  factory StoreResponseModel.fromRawJson(String str) =>
-      StoreResponseModel.fromJson(json.decode(str));
+  factory CustomersResponseModel.fromRawJson(String str) =>
+      CustomersResponseModel.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
 
-  factory StoreResponseModel.fromJson(Map<String, dynamic> json) =>
-      StoreResponseModel(
+  factory CustomersResponseModel.fromJson(Map<String, dynamic> json) =>
+      CustomersResponseModel(
         success: json["success"],
         message: json["message"],
         data: json["data"] == null
             ? []
-            : List<Store>.from(json["data"]!.map((x) => Store.fromJson(x))),
+            : List<Customer>.from(
+                json["data"]!.map((x) => Customer.fromJson(x)),
+              ),
       );
 
   Map<String, dynamic> toJson() => {
@@ -30,12 +32,13 @@ class StoreResponseModel {
   };
 }
 
-class Store {
+class Customer {
   final int? id;
   final String? name;
-  final String? location;
+  final String? address;
   final String? status;
   final String? phone;
+  final String? branchCode;
   final List<int>? prizes;
   final bool? received;
   final dynamic receivedDate;
@@ -44,12 +47,13 @@ class Store {
   final DateTime? updatedAt;
   final List<PrizeObject>? prizeObjects;
 
-  Store({
+  Customer({
     this.id,
     this.name,
-    this.location,
+    this.address,
     this.status,
     this.phone,
+    this.branchCode,
     this.prizes,
     this.received,
     this.receivedDate,
@@ -59,16 +63,18 @@ class Store {
     this.prizeObjects,
   });
 
-  factory Store.fromRawJson(String str) => Store.fromJson(json.decode(str));
+  factory Customer.fromRawJson(String str) =>
+      Customer.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
 
-  factory Store.fromJson(Map<String, dynamic> json) => Store(
+  factory Customer.fromJson(Map<String, dynamic> json) => Customer(
     id: json["id"],
     name: json["name"],
-    location: json["location"],
+    address: json["address"],
     status: json["status"],
     phone: json["phone"],
+    branchCode: json["branch_code"],
     prizes: json["prizes"] == null
         ? []
         : List<int>.from(json["prizes"]!.map((x) => x)),
@@ -91,9 +97,10 @@ class Store {
   Map<String, dynamic> toJson() => {
     "id": id,
     "name": name,
-    "location": location,
+    "address": address,
     "status": status,
     "phone": phone,
+    "branch_code": branchCode,
     "prizes": prizes == null ? [] : List<dynamic>.from(prizes!.map((x) => x)),
     "received": received,
     "received_date": receivedDate,
